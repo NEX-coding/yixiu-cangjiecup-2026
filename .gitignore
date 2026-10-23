@@ -1,0 +1,29 @@
+# 密钥与本地配置
+.env.local
+config.local.js
+doubao-bridge-extension/key.pem
+
+# 依赖与构建
+node_modules/
+.next/
+out/
+dist/
+*.tsbuildinfo
+
+# 运行时数据
+user-app/data/uploads/
+**/uploads/
+*.db-shm
+*.db-wal
+
+# 杂项
+__pycache__/
+*.pyc
+.DS_Store
+.cursor/
+*.log
+
+# Competition submission excludes private source materials
+参赛素材/
+*.db
+*.db-journal

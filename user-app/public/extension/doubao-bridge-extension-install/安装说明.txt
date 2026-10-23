@@ -1,0 +1,15 @@
+衣秀 · 豆包填入
+
+【安装】
+1. 解压本 zip
+2. chrome://extensions → 开发者模式
+3. 「加载已解压」→ 选本文件夹（含 manifest.json）
+
+【扩展 ID】ojcfmgnmlnhjnkomecakgifjegclamfh
+
+【本地演示】
+用户端：http://127.0.0.1:3002
+管理端：http://127.0.0.1:3001
+插件说明：http://127.0.0.1:3002/extension
+
+【验证】豆包 chat 页 → 扩展图标 →「在豆包页测试填入」

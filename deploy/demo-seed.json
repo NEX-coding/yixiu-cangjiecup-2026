@@ -1,0 +1,90 @@
+{
+  "scene_templates": [
+    {
+      "id": 1,
+      "user_id": null,
+      "name": "模特街拍展示",
+      "description": "上传服装图，自动生成白底商品图并合成街景场景（全流程）",
+      "category": "street",
+      "thumbnail_color": "#d4cfc7",
+      "thumbnail_url": "/api/scene-templates/covers/scene_1.png",
+      "config_json": "{\"n\": 1, \"size\": \"1024x1536\", \"model\": \"gpt-image-2\", \"steps\": [{\"id\": \"white-bg\", \"label\": \"电商白底\", \"prompt\": \"帮我生成图片：根据图1生成纯白电商背景图。保持图1模特身形与服装完全一致（款式、颜色、细节不变）。模特正面对镜头，双手自然放置且不遮挡衣服，手上无首饰。将图1模特的人脸与发型替换为图2（左侧头发梳至耳后，其余按图2），头发自然有质感。若露腿则穿美肤袜；去除身上包包及多余道具。鞋子：图1若可见鞋子则完全保留同款同色；图1若未露出脚部或看不清鞋，则按服装风格搭配合理完整鞋款（色系、风格与服装一致），禁止光脚、禁止 barefoot、禁止乱配无关鞋款。背景纯白电商棚拍，无杂物阴影，高清商业摄影质感。\", \"fixedRefPath\": \"图2头发参考图.png\", \"fixedRefLabel\": \"图2头发参考图\", \"fixedRefPreview\": \"/api/assets/%E5%9B%BE2%E5%A4%B4%E5%8F%91%E5%8F%82%E8%80%83%E5%9B%BE.png\", \"requiresUserRef\": true}, {\"id\": \"scene-composite\", \"label\": \"街景合成\", \"prompt\": \"帮我生成图片：将图1的人物完整合成到图2的场景中：\\n- 人物居中站在画面正中央，身高约168cm，脚底到画面底部预留20%的空白区域，比例自然协调\\n- 人物保持原有的穿着、发型和姿态不变，融入图2的街景墙面环境\\n- 光影、色调与图2保持一致，人物边缘自然，无违和感，整体画面真实自然\\n- 人脸模糊处理\", \"fixedRefPath\": \"图2背景参考图.png\", \"fixedRefLabel\": \"图2背景参考图\", \"fixedRefPreview\": \"/api/assets/%E5%9B%BE2%E8%83%8C%E6%99%AF%E5%8F%82%E8%80%83%E5%9B%BE.png\", \"requiresUserRef\": true}, {\"id\": \"doubao-video\", \"kind\": \"doubao\", \"label\": \"豆包生成视频\", \"prompt\": \"自动打开豆包，填入提示词库指定条目与街景合成图，在豆包中继续生成视频。\", \"exampleVideoUrl\": \"/api/scene-templates/samples/scene_1_sample.mp4?t=1780695584509\", \"fixedRefPreview\": null, \"promptLibraryId\": 3, \"requiresUserRef\": false}], \"quality\": \"high\", \"asyncMode\": false, \"workflowHint\": \"图1 上传模特服装；图2 固定为头发参考图。白底成功后自动街景合成（全流程）。\", \"output_format\": \"png\", \"response_format\": \"url\"}",
+      "sort_order": 1,
+      "enabled": 0,
+      "created_at": "2026-06-05T19:42:33.594Z",
+      "updated_at": "2026-10-23 13:29:27.955488+08"
+    },
+    {
+      "id": 4,
+      "user_id": null,
+      "name": "简约室内爆款",
+      "description": "干净室内氛围，适合针织衫、家居服等温柔风格",
+      "category": "indoor",
+      "thumbnail_color": "#f5f3ef",
+      "thumbnail_url": "/api/scene-templates/covers/scene_4.png",
+      "config_json": "{\"n\": 1, \"size\": \"1024x1536\", \"model\": \"gpt-image-2\", \"steps\": [{\"id\": \"white-bg\", \"label\": \"电商白底\", \"prompt\": \"帮我生成图片：根据图1生成纯白电商背景图。保持图1模特身形与服装完全一致（款式、颜色、细节不变）。模特正面对镜头，双手自然放置且不遮挡衣服，手上无首饰。将图1模特的人脸与发型替换为图2（左侧头发梳至耳后，其余按图2），头发自然有质感。若露腿则穿美肤袜；去除身上包包及多余道具。鞋子：图1若可见鞋子则完全保留同款同色；图1若未露出脚部或看不清鞋，则按服装风格搭配合理完整鞋款（色系、风格与服装一致），禁止光脚、禁止 barefoot、禁止乱配无关鞋款。背景纯白电商棚拍，无杂物阴影，高清商业摄影质感。 整体偏柔和暖白，适合家居服/针织衫展示。\", \"fixedRefPath\": \"图2头发参考图.png\", \"fixedRefLabel\": \"图2头发参考图\", \"requiresUserRef\": true}, {\"id\": \"indoor-scene\", \"label\": \"室内场景\", \"prompt\": \"帮我生成图片：将图1的人物合成到简约温馨的室内环境中：\\n- 参考图2的空间结构，改造成明亮暖白调室内（落地窗、浅色墙面、沙发或绿植点缀），弱化户外街景元素\\n- 人物居中自然站立，身高约168cm，留足头顶与脚底空白，家居氛围\\n- 柔光均匀，色调温柔干净，适合针织衫/家居服种草\\n- 人脸模糊处理\", \"fixedRefPath\": \"图2背景参考图.png\", \"fixedRefLabel\": \"图2室内参考\", \"requiresUserRef\": true}, {\"id\": \"doubao-video\", \"kind\": \"doubao\", \"label\": \"豆包生成视频\", \"prompt\": \"自动打开豆包，填入「真人视频」提示词与室内合成图，生成温柔居家风短视频。\", \"exampleVideoUrl\": null, \"promptLibraryId\": 2, \"requiresUserRef\": false}], \"quality\": \"high\", \"asyncMode\": false, \"workflowHint\": \"白底精修 → 温馨室内场景 → 豆包生成居家风视频。\", \"output_format\": \"png\", \"response_format\": \"url\"}",
+      "sort_order": 2,
+      "enabled": 1,
+      "created_at": "2026-06-09T04:32:40.367Z",
+      "updated_at": "2026-10-23 13:29:27.955488+08"
+    },
+    {
+      "id": 3,
+      "user_id": null,
+      "name": "都市街拍爆款",
+      "description": "街拍场景一键出片，适合连衣裙、套装等日常穿搭种草",
+      "category": "street",
+      "thumbnail_color": "#d4cfc7",
+      "thumbnail_url": "/api/scene-templates/covers/scene_3.png",
+      "config_json": "{\"n\": 1, \"size\": \"1024x1536\", \"model\": \"gpt-image-2\", \"steps\": [{\"id\": \"white-bg\", \"label\": \"电商白底\", \"prompt\": \"帮我生成图片：根据图1生成纯白电商背景图。保持图1模特身形与服装完全一致（款式、颜色、细节不变）。模特正面对镜头，双手自然放置且不遮挡衣服，手上无首饰。将图1模特的人脸与发型替换为图2（左侧头发梳至耳后，其余按图2），头发自然有质感。若露腿则穿美肤袜；去除身上包包及多余道具。鞋子：图1若可见鞋子则完全保留同款同色；图1若未露出脚部或看不清鞋，则按服装风格搭配合理完整鞋款（色系、风格与服装一致），禁止光脚、禁止 barefoot、禁止乱配无关鞋款。背景纯白电商棚拍，无杂物阴影，高清商业摄影质感。\", \"fixedRefPath\": \"图2头发参考图.png\", \"fixedRefLabel\": \"图2头发参考图\", \"requiresUserRef\": true}, {\"id\": \"scene-composite\", \"label\": \"街景合成\", \"prompt\": \"帮我生成图片：将图1的人物完整合成到图2的都市街拍场景中：\\n- 人物居中站在画面正中央，身高约168cm，脚底到画面底部预留20%空白，比例自然\\n- 保持穿着、发型与姿态不变，融入图2街景墙面与石板路环境\\n- 光影色调与图2一致，人物边缘自然，真实街拍质感\\n- 人脸模糊处理\", \"fixedRefPath\": \"图2背景参考图.png\", \"fixedRefLabel\": \"图2街景背景\", \"requiresUserRef\": true}, {\"id\": \"doubao-video\", \"kind\": \"doubao\", \"label\": \"豆包生成视频\", \"prompt\": \"自动打开豆包，填入「爆款视频」提示词与街景合成图，生成都市街拍种草视频。\", \"exampleVideoUrl\": null, \"promptLibraryId\": 3, \"requiresUserRef\": false}], \"quality\": \"high\", \"asyncMode\": false, \"workflowHint\": \"图1 上传服装图；图2 头发参考。白底后合成都市街景，再跳转豆包生成街拍视频。\", \"output_format\": \"png\", \"response_format\": \"url\"}",
+      "sort_order": 1,
+      "enabled": 1,
+      "created_at": "2026-06-09T04:32:40.367Z",
+      "updated_at": "2026-10-23 13:29:27.955488+08"
+    },
+    {
+      "id": 5,
+      "user_id": null,
+      "name": "商业主图爆款",
+      "description": "电商主图质感，适合大促爆款链接与详情页头图",
+      "category": "business",
+      "thumbnail_color": "#e0ddd8",
+      "thumbnail_url": "/api/scene-templates/covers/scene_5.png",
+      "config_json": "{\"n\": 1, \"size\": \"1024x1536\", \"model\": \"gpt-image-2\", \"steps\": [{\"id\": \"white-bg\", \"label\": \"电商白底\", \"prompt\": \"帮我生成图片：根据图1生成纯白电商背景图。保持图1模特身形与服装完全一致（款式、颜色、细节不变）。模特正面对镜头，双手自然放置且不遮挡衣服，手上无首饰。将图1模特的人脸与发型替换为图2（左侧头发梳至耳后，其余按图2），头发自然有质感。若露腿则穿美肤袜；去除身上包包及多余道具。鞋子：图1若可见鞋子则完全保留同款同色；图1若未露出脚部或看不清鞋，则按服装风格搭配合理完整鞋款（色系、风格与服装一致），禁止光脚、禁止 barefoot、禁止乱配无关鞋款。背景纯白电商棚拍，无杂物阴影，高清商业摄影质感。 白底边缘干净锐利，服装色彩精准，适合电商主图。\", \"fixedRefPath\": \"图2头发参考图.png\", \"fixedRefLabel\": \"图2头发参考图\", \"requiresUserRef\": true}, {\"id\": \"business-scene\", \"label\": \"商业场景\", \"prompt\": \"帮我生成图片：将图1合成到图2环境，输出电商主图级成片：\\n- 人物居中略靠前，突出服装卖点与版型细节，商业棚拍构图\\n- 背景简洁高级、杂讯少，适合大促链接与详情页头图\\n- 色调精准还原服装，边缘清晰，高清商业摄影质感\\n- 人脸模糊处理\", \"fixedRefPath\": \"图2背景参考图.png\", \"fixedRefLabel\": \"图2商业背景\", \"requiresUserRef\": true}, {\"id\": \"doubao-video\", \"kind\": \"doubao\", \"label\": \"豆包生成视频\", \"prompt\": \"自动打开豆包，填入「爆款视频」提示词与商业场景图，生成高转化主图视频。\", \"exampleVideoUrl\": null, \"promptLibraryId\": 3, \"requiresUserRef\": false}], \"quality\": \"high\", \"asyncMode\": false, \"workflowHint\": \"商业白底 → 主图级场景 → 豆包生成转化向视频。\", \"output_format\": \"png\", \"response_format\": \"url\"}",
+      "sort_order": 3,
+      "enabled": 1,
+      "created_at": "2026-06-09T04:32:40.367Z",
+      "updated_at": "2026-10-23 13:29:27.955488+08"
+    },
+    {
+      "id": 6,
+      "user_id": null,
+      "name": "模特种草爆款",
+      "description": "强调身形与搭配，适合短视频带货与直播间切片",
+      "category": "model",
+      "thumbnail_color": "#c9c4bc",
+      "thumbnail_url": "/api/scene-templates/covers/scene_6.png",
+      "config_json": "{\"n\": 1, \"size\": \"1024x1536\", \"model\": \"gpt-image-2\", \"steps\": [{\"id\": \"white-bg\", \"label\": \"电商白底\", \"prompt\": \"帮我生成图片：根据图1生成纯白电商背景图。保持图1模特身形与服装完全一致（款式、颜色、细节不变）。模特正面对镜头，双手自然放置且不遮挡衣服，手上无首饰。将图1模特的人脸与发型替换为图2（左侧头发梳至耳后，其余按图2），头发自然有质感。若露腿则穿美肤袜；去除身上包包及多余道具。鞋子：图1若可见鞋子则完全保留同款同色；图1若未露出脚部或看不清鞋，则按服装风格搭配合理完整鞋款（色系、风格与服装一致），禁止光脚、禁止 barefoot、禁止乱配无关鞋款。背景纯白电商棚拍，无杂物阴影，高清商业摄影质感。 身形比例自然，便于后续全身展示与搭配呈现。\", \"fixedRefPath\": \"图2头发参考图.png\", \"fixedRefLabel\": \"图2头发参考图\", \"requiresUserRef\": true}, {\"id\": \"model-scene\", \"label\": \"模特展示\", \"prompt\": \"帮我生成图片：将图1的人物自然融入图2场景，偏模特种草展示：\\n- 人物全身居中，站姿略带动态感，展示搭配、垂感与身形比例\\n- 身高约168cm，脚底留白约20%，适合短视频截图与直播切片\\n- 光影自然，强调服装细节与整体搭配，真实种草质感\\n- 人脸模糊处理\", \"fixedRefPath\": \"图2背景参考图.png\", \"fixedRefLabel\": \"图2展示背景\", \"requiresUserRef\": true}, {\"id\": \"doubao-video\", \"kind\": \"doubao\", \"label\": \"豆包生成视频\", \"prompt\": \"自动打开豆包，填入「真人视频」提示词与模特展示图，生成带货种草短视频。\", \"exampleVideoUrl\": null, \"promptLibraryId\": 2, \"requiresUserRef\": false}], \"quality\": \"high\", \"asyncMode\": false, \"workflowHint\": \"模特白底 → 全身展示场景 → 豆包生成带货切片视频。\", \"output_format\": \"png\", \"response_format\": \"url\"}",
+      "sort_order": 4,
+      "enabled": 1,
+      "created_at": "2026-06-09T04:32:40.367Z",
+      "updated_at": "2026-10-23 13:29:27.955488+08"
+    }
+  ],
+  "prompts": [
+    {
+      "id": 2,
+      "title": "真人视频",
+      "content": "9:16 竖屏真人写实视频，苹果原生相机质感，画面稳定。参考图中人物18–20 岁冷白皮东亚少女，五官清晰自然，真实肤质与细节，表情放松无夸张情绪。整套穿搭精准复刻参考图一，背景严格保持参考图一致，还原版型、配色与面料纹理。\n人物自然站姿开始，身体缓慢转为约 70° 侧身角度，重心自然落在后侧腿，形成自然胯部高低差与身体曲线延展。上半身保持放松状态，右手轻触发丝整理至耳后，随后自然下落，衣料随身体转动产生自然贴合与垂感。停顿展示整体侧身轮廓比例与服装线条后，缓慢回正至正面站姿。\n全程正脸可见，眼神自然看向镜头或略微偏移镜头，表情轻松真实，无摆拍感或夸张姿态。全身微远景构图，人物居中，头顶留白 30%，脚底留白 20%，人物画面占比约 60%。固定机位与焦距，无运镜、无缩放。柔和冷白漫反射光，肤质通透自然，服饰纹理清晰，整体色调干净真实。避免畸形、穿模、肢体扭曲、比例异常，保持真实人体结构与实拍质感。",
+      "created_at": "2026-05-20T00:08:36Z",
+      "updated_at": "2026-05-20T00:08:36Z"
+    },
+    {
+      "id": 3,
+      "title": "爆款视频",
+      "content": "9:16 竖屏真人写实视频，苹果原生相机质感，画面稳定。18-20 岁冷白皮东亚少女，全程不露脸，身形匀称自然；整套穿搭精准复刻参考图一，还原版型、配色与面料纹理，若露腿搭配美肤袜。左手持白色 iPhone17 Pro Max 遮脸并保持不动；右手动作连贯自然：撩发至耳后→单手叉腰→手臂自然垂落→侧身 45° 展示服饰垂感→缓慢回正站姿。全身微远景构图，人物居中，头顶留白 30%，脚底留白 20%，人物画面占比约 60%。固定机位与焦距，无运镜、无缩放。肤质通透，服饰纹理清晰，整体色调自然干净。避免畸形、穿模、肢体扭曲、比例异常，保持真实人体结构与真实拍摄效果。",
+      "created_at": "2026-05-20T00:39:06Z",
+      "updated_at": "2026-06-05T22:54:50Z"
+    }
+  ]
+}

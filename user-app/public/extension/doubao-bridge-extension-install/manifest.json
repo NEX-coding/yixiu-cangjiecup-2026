@@ -1,0 +1,39 @@
+{
+  "manifest_version": 3,
+  "name": "衣秀 · 豆包填入",
+  "version": "1.0.7",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAln+NUyPIc2f21iicNc4OVEElosHPbEEQ4WGjkOLGX2gwqAKonOcQaUu0YLOL9aC/XAfmk69qy660XekZHUNzwss0vvDGv9O9Gr4+IapU0GN1VbyGabrV6gswBf3iCVYukGTxWSfh9NS3k9fDcS5woilPat40Rrc09d5Qs7kyyYgsl7H+bg807ce3b/z7C1ubfYKZLRBiF/MgnK8+BXbvF/VkjG4nOeqTX9z61CsKrbxJxKWzDU0C6YrBFnbDTK+gL4xoDj+VB8S+tEHwCf3/tTFIh92HWUZebuyCKxwNGEXYTIFtjPcqWUCxbfBdDpz4RWOnyuZFXOkIuiU4XtZmYQIDAQAB",
+  "description": "从衣秀自动填入豆包对话：提示词 + 模特场景图，生成带货短视频",
+  "permissions": [
+    "storage",
+    "tabs",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://www.doubao.com/*"
+  ],
+  "externally_connectable": {
+    "matches": [
+      "http://127.0.0.1/*",
+      "http://localhost/*"
+    ]
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.doubao.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "豆包填入助手",
+    "default_popup": "popup.html"
+  }
+}

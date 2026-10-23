@@ -1,0 +1,104 @@
+# 衣秀 — 用户端 + 管理端（竞赛本地/自建部署）
+# 用法：在 deploy/ 目录执行 docker compose up -d --build
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: yixiu-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: yixiu
+      POSTGRES_USER: yixiu
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-yixiu_secret}
+    volumes:
+      - yixiu_pg_data:/var/lib/postgresql/data
+      - ./postgres/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U yixiu -d yixiu"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks: [yixiu]
+
+  user-app:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile
+      args:
+        APP_NAME: user-app
+        APP_PORT: 3002
+    image: yixiu-user-app:latest
+    container_name: yixiu-user-app
+    restart: unless-stopped
+    env_file:
+      - ../.env.local
+    environment:
+      NODE_ENV: production
+      PORT: 3002
+      HOSTNAME: 0.0.0.0
+      DATABASE_URL: postgresql://yixiu:${POSTGRES_PASSWORD:-yixiu_secret}@yixiu-postgres:5432/yixiu
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ../user-app/data:/app/user-app/data
+      - ../data:/app/data
+    ports:
+      - "3002:3002"
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          'node -e "fetch(\"http://127.0.0.1:3002/login\").then(r=>process.exit(r.ok||r.status===307?0:1)).catch(()=>process.exit(1))"',
+        ]
+      interval: 30s
+      timeout: 10s
+      start_period: 60s
+      retries: 3
+    networks: [yixiu]
+
+  studio-next:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile
+      args:
+        APP_NAME: studio-next
+        APP_PORT: 3001
+    image: yixiu-studio-next:latest
+    container_name: yixiu-studio-next
+    restart: unless-stopped
+    env_file:
+      - ../.env.local
+    environment:
+      NODE_ENV: production
+      PORT: 3001
+      HOSTNAME: 0.0.0.0
+      DATABASE_URL: postgresql://yixiu:${POSTGRES_PASSWORD:-yixiu_secret}@yixiu-postgres:5432/yixiu
+    volumes:
+      - ../user-app/data:/app/user-app/data
+      - ../data:/app/data
+    ports:
+      - "3001:3001"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      user-app:
+        condition: service_healthy
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          'node -e "fetch(\"http://127.0.0.1:3001/login\").then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"',
+        ]
+      interval: 30s
+      timeout: 10s
+      start_period: 60s
+      retries: 3
+    networks: [yixiu]
+
+volumes:
+  yixiu_pg_data:
+
+networks:
+  yixiu:
+    name: yixiu_net
