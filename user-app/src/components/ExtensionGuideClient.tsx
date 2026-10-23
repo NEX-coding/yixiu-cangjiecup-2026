@@ -35,7 +35,7 @@ export function ExtensionGuideClient({ extensionId }: { extensionId: string }) {
     },
     {
       title: "在衣秀 中生成视频",
-      body: "回到「我的作品」→ 打开已完成街景合成的任务 → 点击「生成视频」。系统将自动打开豆包并填入提示词与合成图。",
+      body: "回到「我的作品」→ 打开已完成街景合成的任务 → 点击「生成视频」。系统将打开豆包并填入提示词。请检查图片附件，未出现时下载场景图后手动上传。",
     },
   ];
 
@@ -47,7 +47,7 @@ export function ExtensionGuideClient({ extensionId }: { extensionId: string }) {
           豆包填入插件
         </h1>
         <p className="mx-auto mt-4 max-w-[560px] text-[17px] text-[var(--text-secondary)]">
-          安装后可从衣秀 一键跳转豆包，自动填入提示词与街景图，继续生成视频。
+          安装后可从衣秀 一键跳转豆包，填入提示词并传递街景图。请检查附件，缺失时手动补传，再继续生成视频。
         </p>
         <a
           href="/extension/doubao-bridge-extension-install.zip"

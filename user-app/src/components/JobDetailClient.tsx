@@ -155,7 +155,7 @@ export function JobDetailClient({ id }: { id: string }) {
           : prev
       );
       setDoubaoMessage(
-        `豆包已填入「${promptTitle}」，剩余积分 ${videoCredits}`
+        `已发送「${promptTitle}」到豆包，请检查图片附件；剩余积分 ${videoCredits}`
       );
     } catch (err) {
       const msg = err instanceof Error ? err.message : "发送豆包失败";
@@ -393,6 +393,7 @@ export function JobDetailClient({ id }: { id: string }) {
                           <Link href="/extension" className="mx-1 text-[var(--accent)] no-underline hover:underline">
                             「豆包填入」扩展
                           </Link>
+                          。进入豆包后请检查参考图附件；若图片未出现，请下载场景图后手动上传，再确认生成。
                         </p>
                       </div>
                     )}
